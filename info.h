@@ -7,5 +7,5 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#define file "1.txt" //digital data
+
 

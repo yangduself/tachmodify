@@ -49,13 +49,14 @@ double decode_tach(double *samples, int length, double fsamp)
 {
 
                double retval=-1;
-				
+				double retval_1 = -1;
+				double retval_2 = -1;
                /* YOUR CODE GOES HERE */
 			   //double a = 1;
 			   //double *p = NULL;
 			   int j = 0;
 			   int countP = 0;
-			   
+			   int countN = 0;
 			  // p = samples;
 			   //debug
 			   #ifdef DEBUG
@@ -80,7 +81,11 @@ double decode_tach(double *samples, int length, double fsamp)
 						countP++;  
 			   
 					}
-			
+					else if(samples[j]<0.98)
+					{
+						countN++;
+					}
+					
 					
 				
 			   }
@@ -94,10 +99,11 @@ double decode_tach(double *samples, int length, double fsamp)
 				}
 				
 				printf("countP is %d.\n", countP);
-				
+				printf("countN is %d.\n", countN);
 				#endif
-				retval = (double)countP*fsamp*60/(double)length;
-				
+				retval_1 = (double)countP*fsamp*60/(double)length;
+				retval_2 = (double)countN*fsamp*60/(double)length;
+				retval = (retval_1+retval_2)/2;
                return (retval);
 
 
