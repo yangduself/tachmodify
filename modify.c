@@ -1,6 +1,6 @@
 #include "info.h"
 #define LENGTH 1024
-//#define DEBUG
+#define DEBUG
 double decode_tach(double *samples, int length, double fsamp);
 
 void test_tach();
